@@ -12,7 +12,6 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Perl interface to y.ahoo.it",
   "AUTHOR" => "Charles A. Wimmer <charles\@wimmer.net>",
   "BUILD_REQUIRES" => {
-    "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Pod::Coverage::TrustPod" => 0,
@@ -38,7 +37,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }

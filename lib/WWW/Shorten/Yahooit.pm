@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package WWW::Shorten::Yahooit;
 {
-  $WWW::Shorten::Yahooit::VERSION = '0.001';
+  $WWW::Shorten::Yahooit::VERSION = '0.002';
 }
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
@@ -18,7 +18,7 @@ sub makeashorterlink{
     my $url = shift or croak 'No URL passed to makeashorterlink';
     my $yql = WWW::YQL->new();
 
-    my $data = $yql->query("insert into yahoo.y.ahoo.it (url) values ('http://search.cpan.org/~cwimmer/')");
+    my $data = $yql->query("insert into yahoo.y.ahoo.it (url) values ('".$url."')");
 
     return $data->{'query'}->{'results'}->{'url'};
 }
@@ -41,7 +41,7 @@ WWW::Shorten::Yahooit - Perl interface to y.ahoo.it
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
