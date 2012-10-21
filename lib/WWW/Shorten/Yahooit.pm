@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package WWW::Shorten::Yahooit;
 {
-  $WWW::Shorten::Yahooit::VERSION = '0.002';
+  $WWW::Shorten::Yahooit::VERSION = '0.003';
 }
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
@@ -41,7 +41,7 @@ WWW::Shorten::Yahooit - Perl interface to y.ahoo.it
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
