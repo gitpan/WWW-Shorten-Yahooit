@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package WWW::Shorten::Yahooit;
 {
-  $WWW::Shorten::Yahooit::VERSION = '0.003';
+  $WWW::Shorten::Yahooit::VERSION = '0.004';
 }
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
@@ -19,20 +19,27 @@ sub makeashorterlink{
     my $yql = WWW::YQL->new();
 
     my $data = $yql->query("insert into yahoo.y.ahoo.it (url) values ('".$url."')");
-
-    return $data->{'query'}->{'results'}->{'url'};
+    if (defined $data->{'query'}->{'results'}->{'error'}){
+	die $data->{'query'}->{'results'}->{'error'};
+    }else{
+	return $data->{'query'}->{'results'}->{'url'};
+    }
 }
 
 sub makealongerlink{
     my $url = shift or croak 'No URL passed to makeashorterlink';
     my $yql = WWW::YQL->new();
     my $data = $yql->query("select * from yahoo.y.ahoo.it where url='".$url."'");
-    return $data->{'query'}->{'results'}->{'url'};
-
+    if (defined $data->{'query'}->{'results'}->{'error'}){
+	die $data->{'query'}->{'results'}->{'error'};
+    }else{
+	return $data->{'query'}->{'results'}->{'url'};
+    }
 }
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -41,7 +48,7 @@ WWW::Shorten::Yahooit - Perl interface to y.ahoo.it
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -84,4 +91,3 @@ This is free software, licensed under:
   The (three-clause) BSD License
 
 =cut
-

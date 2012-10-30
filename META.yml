@@ -30,4 +30,4 @@ requires:
   warnings: 0
 resources:
   repository: git://github.com/cwimmer/WWW-Shorten-Yahooit.git
-version: 0.003
+version: 0.004
